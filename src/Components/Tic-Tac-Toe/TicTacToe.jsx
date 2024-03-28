@@ -22,19 +22,19 @@ const TicTacToe = () => {
 
     let box_array =[box1,box2,box3,box4,box5,box6,box7,box8,box9]
 
-    const toggle =(w,num) =>{
+    const toggle =(e,num) =>{
 
         if(lock){
             return 0;
         }
         if (count%2===0){
             e.target.innerHTML = `<img src ='${cross}'>`;
-            data[num]=x;
+            data[num]="x";
             setCount(++count);
         }
         else{
             e.target.innerHTML = `<img src ='${circle}'>`;
-            data[num]=o;
+            data[num]="o";
             setCount(++count);
         }
         checkWin()
@@ -70,10 +70,10 @@ const TicTacToe = () => {
     const won =(winner) => {
         setLock(true);
         if(winner === 'x'){
-            titleRef.current.innerHTML = `Congratulations: <img src=${cross}>`;
+            titleRef.current.innerHTML = `Congratulations: <img src=${cross}> Winner`;
         }
         else{
-            titleRef.current.innerHTML = `Congratulations: <img src=${circle}>`;i
+            titleRef.current.innerHTML = `Congratulations: <img src=${circle}> Winner`;
         }
     }
 
@@ -105,7 +105,7 @@ const TicTacToe = () => {
                 <div className="boxes" ref={box9} onClick={(e)=>{toggle(e,8)}}></div>
             </div>
         </div>
-        <button className="reset" onClick={() =>{reset}}>Reset</button>
+        <button className="reset" onClick={() =>{reset()}}>Reset</button>
     </div>
   )
 }
